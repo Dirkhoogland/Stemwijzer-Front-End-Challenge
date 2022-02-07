@@ -5,4 +5,12 @@
     <RootNamespace>Stemwijzer_Front_End_Challenge</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Images\Background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\Images\Background.png" />
+  </ItemGroup>
+
 </Project>

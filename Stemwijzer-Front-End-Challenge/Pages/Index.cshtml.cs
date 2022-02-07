@@ -21,5 +21,10 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         {
 
         }
+
+        public void ButtonStart()
+        {
+            
+        }
     }
 }
