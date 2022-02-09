@@ -23,6 +23,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         {
            
         }
+         
         // Testen op correcte match, voer in:
         // PVV: contra, pro, contra, pro
         // SP: pro, contra, contra, contra
