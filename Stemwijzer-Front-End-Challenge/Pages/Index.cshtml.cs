@@ -19,19 +19,5 @@ namespace Stemwijzer_Front_End_Challenge.Pages
             
         }
 
-        public void OnStart()
-        {
-           
-        }
-         
-        // Testen op correcte match, voer in:
-        // PVV: contra, pro, contra, pro
-        // SP: pro, contra, contra, contra
-        // D66: pro, contra, pro, contra
-        // CU: pro, pro, pro, contra
-
-
-
-
     }
 }
