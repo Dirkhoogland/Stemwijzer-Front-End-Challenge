@@ -3,16 +3,28 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<div class="container-home">
+
 
     <div class = "textmid">
-    <h1>StemWijzer 2022</h1>
-    <h2>Bekijk uw keuze in een paar vragen</h2>
+        <h1>StemWijzer 2022</h1>
+        <h2>Bekijk uw keuze in een paar vragen</h2>
     
-    <p class = "Textbody" >Op wie moet jij stemmen voor de Tweede Kamer verkiezingen?</p>
-    <button class = "Button-Start" id = "ButtonStart">Start</button>
+         <p class = "Textbody" id = "Uitleg" >Op wie moet ik stemmen voor de Tweede Kamer verkiezingen?</p>
+         <form asp-page-handler = "Start" method = post>
+            <button class = "Button-Start" id = "ButtonStart"  >Start</button>
+         </form>
+         <p class = "Textbody" id = "Vraag">Als u klaar bent om de vragen te beantwoorden druk op de start knop.</p>
+         <p class = "Textbody" id = "Partij"></p>
+ @*    div for buttons to make visible once the start button is pressed*@ 
+             <div class = "ButtonsDiv" id = "ButtonsDiv">
+                  <button  class = "Buttons" id = "Buttoneens">Eens</button>
 
-    <p class = "textbody2">Als u klaar bent om de vragen te beantwoorden druk op de start knop.</p>
+                  <button class = "Buttons" id = "Buttononeens">Oneens</button>
+
+                  <button class = "Buttons" id = "Geenmening">Geen mening</button>
+
+            </div>
     </div>
-</div>
+
+
 

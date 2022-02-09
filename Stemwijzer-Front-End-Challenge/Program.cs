@@ -19,8 +19,10 @@ namespace Stemwijzer_Front_End_Challenge
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
-                {
+                { 
                     webBuilder.UseStartup<Startup>();
                 });
+
+        
     }
 }

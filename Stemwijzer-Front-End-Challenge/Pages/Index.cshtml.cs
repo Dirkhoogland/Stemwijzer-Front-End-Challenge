@@ -8,23 +8,29 @@ using System.Threading.Tasks;
 
 namespace Stemwijzer_Front_End_Challenge.Pages
 {
+    
+
+
     public class IndexModel : PageModel
-    {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
+    { 
+        
         public void OnGet()
-        {
-
-        }
-
-        public void ButtonStart()
         {
             
         }
+
+        public void OnStart()
+        {
+           
+        }
+        // Testen op correcte match, voer in:
+        // PVV: contra, pro, contra, pro
+        // SP: pro, contra, contra, contra
+        // D66: pro, contra, pro, contra
+        // CU: pro, pro, pro, contra
+
+
+
+
     }
 }
