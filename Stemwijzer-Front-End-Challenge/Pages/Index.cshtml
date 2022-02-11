@@ -11,7 +11,7 @@
         
          <p class = "Textbody" id = "Uitleg" >Op wie moet ik stemmen voor de Tweede Kamer verkiezingen?</p>
 
-         <asp:button  class = "Button-Start" id = "ButtonStart" onclick = "AlterButtons()"   >Start</asp:button>
+         <asp:button  class = "Button-Start" id = "ButtonStart" onclick = "AlterButtons()">Start</asp:button>
 
          <p class = "Textbody" id = "Statement"></p>
 
@@ -19,7 +19,7 @@
 
          <p class = "Textbody" id = "Partij"></p>
 
- @*    div for buttons to make visible once the start button is pressed*@ 
+ @*    div for buttons to be made visible once the start button is pressed*@ 
 
              <div class = "ButtonsDiv" id = "ButtonsDiv">
                   <button  class = "Buttons" id = "Buttoneens">Eens</button>
@@ -28,10 +28,32 @@
 
                   <button class = "Buttons" id = "Geenmening">Geen mening</button>
 
-                  <button class = "Buttons" id = "skip">Overslaan</button>
+                  <button class = "Buttons" id = "Uitklappen" onclick = "uitleggen()">Uitleg</button>
+
+                  <button class = "Buttons" id = "Volgende">Volgende</button>
 
             </div>
+
+            <div class = "mening" id = "meningen">
+                <p>PVV</p>
+                <p id = "PVVP">punt</p>
+                <p id = "PVVM" >mening</p>
+
+                <p>SP</p>
+                <p id = "SPP">punt</p>
+                <p id = "SPM">mening</p>
+
+                <p>D66</p>
+                <p id = "D66P">punt</p>
+                <p id = "D66M">mening</p>
+
+                <p>CU</p>
+                <p id = "CUP" >punt</p>
+                <p id = "CUM">mening</p>
+            </div>
     </div>
+
+
 
 
 
