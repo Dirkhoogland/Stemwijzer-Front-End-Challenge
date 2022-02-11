@@ -65,6 +65,7 @@ body {
 }
 /* Footer styling*/
 .footer {
+    margin-top:30px;
   position:fixed;
   bottom: 0;
   width: 100%;
@@ -80,9 +81,10 @@ body {
     border-width:5px;
     margin-top:5%;
     margin-left:25%;
+    margin-bottom:10%;
     float:left;
     width:50%;
-    height:80%;
+    height:90%;
 }
 /* starting button outside of the div with different width and heights*/
 .Button-Start {
@@ -94,6 +96,7 @@ body {
     border-width: 2px;
     border-color: darkgray;
 }
+
 /* the div for the answering buttons*/
 .ButtonsDiv {
     visibility:hidden;
@@ -113,8 +116,6 @@ body {
     color:black;
 }
 
-.mening {
-    visibility: hidden;
-    font-size: 6px;
-
+.mening{
+    visibility:hidden;
 }

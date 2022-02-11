@@ -14,27 +14,27 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         {
            
         }
-        [JSInvokable]
+
         public void Bindend_referendum(string[] Antwoorden)
         {
             string antwoord = "test";
             Antwoorden.SetValue(antwoord, 0);
         }
-        [JSInvokable]
+
         public void Maatschappelijke_dienstplicht(string[] Antwoorden)
         {
             string antwoord = "test";
             Antwoorden.SetValue(antwoord, 1);
 
         }
-        [JSInvokable]
+
         public void Anoniem_solliciteren(string[] Antwoorden)
         {
             string antwoord = "test";
             Antwoorden.SetValue(antwoord, 2);
 
         }
-        [JSInvokable]
+
         public void Groepsbelediging(string[] Antwoorden)
         {
             string antwoord = "test";
@@ -42,7 +42,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
 
         }
 
-        [JSInvokable]
+
         public  int Startvragen(int Nummer)
         {
             Nummer++;
@@ -76,7 +76,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         
         string[] Antwoorden = new string[] { "-", "-", "-", "-" };
         int Nummer = 0;
-        [JSInvokable]
+
         public void Start()
         {
             Startvragen(Nummer);

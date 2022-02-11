@@ -45,18 +45,31 @@ var parties = [
         long: "Socialistische Partij"
     }
 ];
-
+//var Antwoorden = [
+//    {
+//        Een: "-",
+//    },
+//    {
+//        Twee: "-",
+//    },
+//    {
+//        Drie: "-",
+//    },
+//    {
+//        Vier: "-",
+//    }
+//];
 
 // functie voor de eens oneens en geen mening knoppen voor te laten komen en voor de eerste vraag en statement
 function AlterButtons()
 {
     uitleg = 1;
+    Meningen.style.visibility = "visible"
     ButtonsDiv.style.visibility = "visible"
     ButtonStart.style.visibility = "hidden"
     Vraag.innerHTML = "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden."
     Statement.innerHTML = "Bindend referendum"
     NummerVraag.innerHTML = "Vraag 1"
-
 
     };
 // functie voor de tweede vraag en statement
