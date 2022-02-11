@@ -8,7 +8,7 @@ var Vraag = document.getElementById("Vraag");
 var Statement = document.getElementById("Statement");
 var NummerVraag = document.getElementById("Uitleg");
 
-// functie voor de eens oneens en geen menng knoppen voor te laten komen en voor de eerste vraag en statement
+// functie voor de eens oneens en geen mening knoppen voor te laten komen en voor de eerste vraag en statement
 function AlterButtons()
 {
     ButtonsDiv.style.visibility = "visible"

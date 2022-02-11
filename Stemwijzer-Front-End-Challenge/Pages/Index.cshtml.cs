@@ -14,8 +14,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
     public class IndexModel : PageModel
     {
 
-        string[] antwoorden = new string[] {"-","-","-","-" }; 
-        
+
         public void OnGet()
         {
             
@@ -51,6 +50,41 @@ namespace Stemwijzer_Front_End_Challenge.Pages
 
 
         }
+
+
+        public  int Startvragen(int nummer)
+        {
+            nummer++;
+            
+            if (nummer == 1 )
+            {
+                Bindend_referendum();
+            }
+            if (nummer == 2)
+            {
+                Maatschappelijke_dienstplicht();
+            }
+            if (nummer == 3)
+            {
+                Anoniem_solliciteren();
+            }
+            if (nummer == 4)
+            {
+                Groepsbelediging();
+            }
+
+            return (nummer);
+
+        }
+
+
+        string[] Antwoorden = new string[] { "-", "-", "-", "-" };
+        int nummer = 0;
+        public void Start()
+        {
+            Startvragen(nummer);
+        }
+
 
     }
 }

@@ -27,6 +27,11 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - Stemwijzer - Dirk Hoogland 
+            @{
+                var date = DateTime.Now.DayOfWeek;
+                var min = DateTime.Now;
+             }
+             - @date @min
         </div>
     </footer>
 
