@@ -20,8 +20,8 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         public void OnPost()
         {
 
-            var ant = Request.Form["Answer"];
-            string vraagnummer = Request.Form["questionnumber"];
+            var ant = Request.Form["Answer"].ToString();
+            string vraagnummer = Request.Form["questionnumber"].ToString();
             int intvraagnummer =  int.Parse(vraagnummer);
 
             Antwoorden.SetValue(ant, intvraagnummer);
