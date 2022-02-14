@@ -11,7 +11,7 @@
         
          <p class = "Textbody" id = "Uitleg" >Op wie moet ik stemmen voor de Tweede Kamer verkiezingen?</p>
 
-         <asp:button  class = "Button-Start" id = "ButtonStart" onclick = "AlterButtons()">Start</asp:button>
+         <button  class = "Button-Start" id = "ButtonStart" onclick = "startvragenjs()">Start</button>
          
          <p class = "Textbody" id = "Statement"></p>
 
@@ -20,38 +20,37 @@
          <p class = "Textbody" id = "Partij"></p>
 
  @*    div for buttons to be made visible once the start button is pressed*@ 
-            <form method = "post" asp-action = "Startvragen(Knop)">
+            <form method = "post" asp-action = "Start" >
              <div class = "ButtonsDiv" id = "ButtonsDiv">
-                  <button  class = "Buttons" id = "Buttoneens" name = "eens">Eens</button>
+                  <button  class = "Buttons" id = "Buttoneens" name = "eens" value = "Pro" >Eens</button>
 
-                  <button class = "Buttons" id = "Buttononeens" name = "oneens ">Oneens</button>
+                  <button class = "Buttons" id = "Buttononeens" name = "oneens " value = "Contra">Oneens</button>
 
-                  <button class = "Buttons" id = "Geenmening" name = "geenmening ">Geen mening</button>
-
-             <input onsubmit = "Check" type = "submit" value = "Volgende" /> 
+                  <button class = "Buttons" id = "Geenmening" name = "geenmening" value = "-">Geen mening</button>
+                  <button class = "Buttons" id = "Uitklappen" onclick = "uitleggen()" >Meningen</button>
+             <input class = "buttons" onsubmit = "Check" type = "submit" onclick = "startvragenjs()"/> 
                   
                @* Party standpoints, made visible once started and show when pressed 'Meningen'*@   
             </div>
             </form>
-            
-                <div class = "mening" id = "meningen">
-                    <button class = "Buttons" id = "Uitklappen" onclick = "uitleggen()">Meningen</button>
-                 <p>PVV</p>
-                 <p id = "PVVP">punt</p>
-                 <p id = "PVVM" >mening</p>
+                <div class = "mening" id = "meningen" style:visibility:hidden;>
+                                      
+                     <p>PVV</p>
+                     <p id = "PVVP">punt</p>
+                     <p id = "PVVM" >mening</p>
 
-                    <p>SP</p>
-                 <p id = "SPP">punt</p>
-                 <p id = "SPM">mening</p>
+                     <p>SP</p>
+                     <p id = "SPP">punt</p>
+                     <p id = "SPM">mening</p>
 
-                 <p>D66</p>
-                 <p id = "D66P">punt</p>
-                 <p id = "D66M">mening</p>
+                     <p>D66</p>
+                     <p id = "D66P">punt</p>
+                     <p id = "D66M">mening</p>
 
-                 <p>CU</p>
-                 <p id = "CUP" >punt</p>
-                 <p id = "CUM">mening</p>
-             </div>
+                     <p>CU</p>
+                     <p id = "CUP" >punt</p>
+                     <p id = "CUM">mening</p>
+                 </div>
     </div>
 
 

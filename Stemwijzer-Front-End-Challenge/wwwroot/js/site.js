@@ -18,6 +18,7 @@ var D66M = document.getElementById("D66M");
 var CUP = document.getElementById("CUP");
 var CUM = document.getElementById("CUM");
 var uitleg = 0;
+var vragen = 1;
 
 var parties = [
     {
@@ -61,49 +62,73 @@ var parties = [
 //];
 
 // functie voor de eens oneens en geen mening knoppen voor te laten komen en voor de eerste vraag en statement
-function AlterButtons()
-{
-    uitleg = 1;
-    Meningen.style.visibility = "visible"
-    ButtonsDiv.style.visibility = "visible"
-    ButtonStart.style.visibility = "hidden"
-    Vraag.innerHTML = "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden."
-    Statement.innerHTML = "Bindend referendum"
-    NummerVraag.innerHTML = "Vraag 1"
 
-    };
-// functie voor de tweede vraag en statement
-function vraag2()
-{
-    uitleg = 2;
-    Vraag.innerHTML = "Er moet een maatschappelijke dienstplicht voor jongeren komen. Zij kunnen dan dienen in het leger, bij de politie of in de zorg."
-    Statement.innerHTML = "Maatschappelijke dienstplicht"
-    NummerVraag.innerHTML = "Vraag 2"
-    Meningen.style.visibility = "hidden"
+function startvragenjs() {
 
+    if (vragen == 1)
+    {
 
+        function AlterButtons() {
+            uitleg = 1;
+            Meningen.style.visibility = "visible"
+            ButtonsDiv.style.visibility = "visible"
+            ButtonStart.style.visibility = "hidden"
+            Vraag.innerHTML = "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden."
+            Statement.innerHTML = "Bindend referendum"
+            NummerVraag.innerHTML = "Vraag 1"
+            vragen++
+
+        };
+        AlterButtons()
     }
-//functie voor de derde vraag en statement
-function vraag3()
-{
-    uitleg = 3;
-    Vraag.innerHTML = "Om discriminatie op basis van de naam te voorkomen, moet anoniem solliciteren bij de overheid en bij openbare instellingen de regel worden."
-    Statement.innerHTML = "Anoniem solliciteren"
-    NummerVraag.innerHTML = "Vraag 3"
-    Meningen.style.visibility = "hidden"
+
+    // functie voor de tweede vraag en statement
+
+    if (vragen == 2)
+    {
+        function vraag2() {
+            uitleg = 2;
+            Vraag.innerHTML = "Er moet een maatschappelijke dienstplicht voor jongeren komen. Zij kunnen dan dienen in het leger, bij de politie of in de zorg."
+            Statement.innerHTML = "Maatschappelijke dienstplicht"
+            NummerVraag.innerHTML = "Vraag 2"
+            Meningen.style.visibility = "hidden"
+            vragen++
 
 
+        }
+        vraag2()
     }
-//functie voor de vierde vraag en statement
-function vraag4()
-{
-    uitleg = 4;
-    Vraag.innerHTML = "Belediging van groepen op grond van ras, godsdienst of geaardheid moet niet langer strafbaar zijn."
-    Statement.innerHTML = "Groepsbelediging"
-    NummerVraag.innerHTML = "Vraag 4"
-    Meningen.style.visibility = "hidden"
+    //functie voor de derde vraag en statement
+
+    if (vragen == 3)
+    {
+        function vraag3() {
+            uitleg = 3;
+            Vraag.innerHTML = "Om discriminatie op basis van de naam te voorkomen, moet anoniem solliciteren bij de overheid en bij openbare instellingen de regel worden."
+            Statement.innerHTML = "Anoniem solliciteren"
+            NummerVraag.innerHTML = "Vraag 3"
+            Meningen.style.visibility = "hidden"
+            vragen++
+
+
+        }
+        vraag3()
+    }
+    //functie voor de vierde vraag en statement
+
+    if (vragen == 4)
+    {
+        function vraag4() {
+            uitleg = 4;
+            Vraag.innerHTML = "Belediging van groepen op grond van ras, godsdienst of geaardheid moet niet langer strafbaar zijn."
+            Statement.innerHTML = "Groepsbelediging"
+            NummerVraag.innerHTML = "Vraag 4"
+            Meningen.style.visibility = "hidden"
+            vragen++
+        }
+        vraag4()
+    }
 }
-
     // uitleg partij
 function uitleggen()
 {

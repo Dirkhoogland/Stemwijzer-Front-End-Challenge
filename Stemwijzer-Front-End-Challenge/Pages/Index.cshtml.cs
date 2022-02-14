@@ -17,27 +17,27 @@ namespace Stemwijzer_Front_End_Challenge.Pages
 
         public void Bindend_referendum(string[] Antwoorden)
         {
-            string antwoord = "test";
+            string antwoord = Response.ToString();
             Antwoorden.SetValue(antwoord, 0);
         }
 
         public void Maatschappelijke_dienstplicht(string[] Antwoorden)
         {
-            string antwoord = "test";
+            string antwoord = Response.ToString();
             Antwoorden.SetValue(antwoord, 1);
 
         }
 
         public void Anoniem_solliciteren(string[] Antwoorden)
         {
-            string antwoord = "test";
+            string antwoord = Response.ToString();
             Antwoorden.SetValue(antwoord, 2);
 
         }
 
         public void Groepsbelediging(string[] Antwoorden)
         {
-            string antwoord = "test";
+            string antwoord = Response.ToString();
             Antwoorden.SetValue(antwoord, 3);
 
         }
@@ -46,6 +46,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         public  int Startvragen(int Nummer)
         {
             Nummer++;
+            var Response = "";
             
             if (Nummer == 1 )
             {
