@@ -46,89 +46,91 @@ var parties = [
         long: "Socialistische Partij"
     }
 ];
-//var Antwoorden = [
-//    {
-//        Een: "-",
-//    },
-//    {
-//        Twee: "-",
-//    },
-//    {
-//        Drie: "-",
-//    },
-//    {
-//        Vier: "-",
-//    }
-//];
 
-// functie voor de eens oneens en geen mening knoppen voor te laten komen en voor de eerste vraag en statement
 
+//antwoorden en vraag nummer versturen naar server
+function SendAnswer() {
+
+
+    fetch("http://localhost:24824/", {
+        method: 'post',
+        headers: {
+            'Content-Type':'text/json',
+        },
+        body: JSON.stringify({ questionnumber: vragen , Answer: "pro" })
+    });
+}
+// start functie voor de vragenlijst
 function startvragenjs() {
 
+    
     if (vragen == 1)
     {
-
-        function AlterButtons() {
-            uitleg = 1;
-            Meningen.style.visibility = "visible"
-            ButtonsDiv.style.visibility = "visible"
-            ButtonStart.style.visibility = "hidden"
-            Vraag.innerHTML = "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden."
-            Statement.innerHTML = "Bindend referendum"
-            NummerVraag.innerHTML = "Vraag 1"
-            vragen++
-
-        };
+        // functie voor de eens oneens en geen mening knoppen voor te laten komen en voor de eerste vraag en statement
         AlterButtons()
+        return
     }
-
     // functie voor de tweede vraag en statement
-
     if (vragen == 2)
     {
-        function vraag2() {
-            uitleg = 2;
-            Vraag.innerHTML = "Er moet een maatschappelijke dienstplicht voor jongeren komen. Zij kunnen dan dienen in het leger, bij de politie of in de zorg."
-            Statement.innerHTML = "Maatschappelijke dienstplicht"
-            NummerVraag.innerHTML = "Vraag 2"
-            Meningen.style.visibility = "hidden"
-            vragen++
-
-
-        }
         vraag2()
+        return
     }
     //functie voor de derde vraag en statement
-
     if (vragen == 3)
     {
-        function vraag3() {
-            uitleg = 3;
-            Vraag.innerHTML = "Om discriminatie op basis van de naam te voorkomen, moet anoniem solliciteren bij de overheid en bij openbare instellingen de regel worden."
-            Statement.innerHTML = "Anoniem solliciteren"
-            NummerVraag.innerHTML = "Vraag 3"
-            Meningen.style.visibility = "hidden"
-            vragen++
 
-
-        }
         vraag3()
+        return
     }
     //functie voor de vierde vraag en statement
-
     if (vragen == 4)
     {
-        function vraag4() {
-            uitleg = 4;
-            Vraag.innerHTML = "Belediging van groepen op grond van ras, godsdienst of geaardheid moet niet langer strafbaar zijn."
-            Statement.innerHTML = "Groepsbelediging"
-            NummerVraag.innerHTML = "Vraag 4"
-            Meningen.style.visibility = "hidden"
-            vragen++
-        }
         vraag4()
+        return
     }
 }
+
+function AlterButtons() {
+    uitleg = 1;
+    Meningen.style.visibility = "visible"
+    ButtonsDiv.style.visibility = "visible"
+    ButtonStart.style.visibility = "hidden"
+    Vraag.innerHTML = "Er moet een bindend referendum komen, waarmee burgers door het parlement aangenomen wetten kunnen tegenhouden."
+    Statement.innerHTML = "Bindend referendum"
+    NummerVraag.innerHTML = "Vraag 1"
+    vragen++
+
+};
+function vraag2() {
+    uitleg = 2;
+    Vraag.innerHTML = "Er moet een maatschappelijke dienstplicht voor jongeren komen. Zij kunnen dan dienen in het leger, bij de politie of in de zorg."
+    Statement.innerHTML = "Maatschappelijke dienstplicht"
+    NummerVraag.innerHTML = "Vraag 2"
+    Meningen.style.visibility = "hidden"
+    vragen++
+}
+
+function vraag3() {
+    uitleg = 3;
+    Vraag.innerHTML = "Om discriminatie op basis van de naam te voorkomen, moet anoniem solliciteren bij de overheid en bij openbare instellingen de regel worden."
+    Statement.innerHTML = "Anoniem solliciteren"
+    NummerVraag.innerHTML = "Vraag 3"
+    Meningen.style.visibility = "hidden"
+    vragen++
+}
+
+function vraag4() {
+    uitleg = 4;
+    Vraag.innerHTML = "Belediging van groepen op grond van ras, godsdienst of geaardheid moet niet langer strafbaar zijn."
+    Statement.innerHTML = "Groepsbelediging"
+    NummerVraag.innerHTML = "Vraag 4"
+    Meningen.style.visibility = "hidden"
+    vragen++
+}
+
+
+
     // uitleg partij
 function uitleggen()
 {

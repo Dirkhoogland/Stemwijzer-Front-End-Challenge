@@ -1,5 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.JSInterop;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+
 
 namespace Stemwijzer_Front_End_Challenge.Pages
 {
@@ -12,7 +18,12 @@ namespace Stemwijzer_Front_End_Challenge.Pages
 
         public void OnGet()
         {
-           
+            
+
+        }
+        public void OnPost()
+        {
+            var ant = Request.Form["questionnumber"]; 
         }
 
         public void Bindend_referendum(string[] Antwoorden)
@@ -43,11 +54,9 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         }
 
 
-        public  int Startvragen(int Nummer)
+        public  int Startvragen(int Nummer, string ant)
         {
-            Nummer++;
-            var Response = "";
-            
+            Nummer++;       
             if (Nummer == 1 )
             {
                 Bindend_referendum(Antwoorden);
@@ -77,25 +86,20 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         
         string[] Antwoorden = new string[] { "-", "-", "-", "-" };
         int Nummer = 0;
-
-        public void Start()
-        {
-            Startvragen(Nummer);
-        }
-
+        
         public void Check()
         {
-          string ant1 = (string)Antwoorden.GetValue(1);
+          string ant1 = (string)Antwoorden.GetValue(0);
             if (ant1 == "-") { Bindend_referendum(Antwoorden); }
 
-            string ant2 = (string)Antwoorden.GetValue(2);
+            string ant2 = (string)Antwoorden.GetValue(1);
             if (ant2 == "-") { Maatschappelijke_dienstplicht(Antwoorden); }
 
-            string ant3 = (string)Antwoorden.GetValue(3);
+            string ant3 = (string)Antwoorden.GetValue(2);
             if (ant3 == "-") { Anoniem_solliciteren(Antwoorden); }
 
-            string ant4 = (string)Antwoorden.GetValue(4);
-            if (ant4 == "-") { Anoniem_solliciteren(Antwoorden); }
+            string ant4 = (string)Antwoorden.GetValue(3);
+            if (ant4 == "-") { Groepsbelediging(Antwoorden); }
 
             else
             {

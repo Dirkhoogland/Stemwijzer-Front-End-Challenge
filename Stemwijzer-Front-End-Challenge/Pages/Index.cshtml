@@ -11,7 +11,7 @@
         
          <p class = "Textbody" id = "Uitleg" >Op wie moet ik stemmen voor de Tweede Kamer verkiezingen?</p>
 
-         <button  class = "Button-Start" id = "ButtonStart" onclick = "startvragenjs()">Start</button>
+         <button  class = "Button-Start" id = "ButtonStart" onclick = "startvragenjs()" >Start</button>
          
          <p class = "Textbody" id = "Statement"></p>
 
@@ -19,16 +19,20 @@
 
          <p class = "Textbody" id = "Partij"></p>
 
+
  @*    div for buttons to be made visible once the start button is pressed*@ 
-            <form method = "post" asp-action = "Start" >
+            <form method = "post"   >
              <div class = "ButtonsDiv" id = "ButtonsDiv">
-                  <button  class = "Buttons" id = "Buttoneens" name = "eens" value = "Pro" >Eens</button>
+                  <label>pro</label>
+                  <input type = "radio" class = "Buttons"  value = "Pro" name = "SubmitButton">
+                  <label>contra</label>
+                  <input type = "radio" class = "Buttons"  value = "Contra" name = "SubmitButton">
+                  <label>geen mening</label>
+                  <input type = "radio" class = "Buttons"  value = "-" name = "SubmitButton">
 
-                  <button class = "Buttons" id = "Buttononeens" name = "oneens " value = "Contra">Oneens</button>
+                  <input type = "button"class = "Buttons"  onclick = "uitleggen()" value = "Meningen" >
 
-                  <button class = "Buttons" id = "Geenmening" name = "geenmening" value = "-">Geen mening</button>
-                  <button class = "Buttons" id = "Uitklappen" onclick = "uitleggen()" >Meningen</button>
-             <input class = "buttons" onsubmit = "Check" type = "submit" onclick = "startvragenjs()"/> 
+             <input type = "button" class = "buttons" onsubmit = "Start"  onclick = "SendAnswer()"/> 
                   
                @* Party standpoints, made visible once started and show when pressed 'Meningen'*@   
             </div>
