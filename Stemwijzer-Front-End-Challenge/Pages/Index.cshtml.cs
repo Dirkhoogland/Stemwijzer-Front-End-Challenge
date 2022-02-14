@@ -1,21 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.JSInterop;
-using System.IO;
+using ServiceStack.Text;
+using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 
 namespace Stemwijzer_Front_End_Challenge.Pages
 {
 
-
-
     public class IndexModel : PageModel
     {
 
-
+        string[] Antwoorden = new string[] { "-", "-", "-", "-" };
         public void OnGet()
         {
             
@@ -23,7 +19,13 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         }
         public void OnPost()
         {
-            var ant = Request.Form["questionnumber"]; 
+
+            var ant = Request.Form["Answer"];
+            string vraagnummer = Request.Form["questionnumber"];
+            int intvraagnummer =  int.Parse(vraagnummer);
+
+            Antwoorden.SetValue(ant, intvraagnummer);
+            Antwoorden.Count();
         }
 
         public void Bindend_referendum(string[] Antwoorden)
@@ -54,7 +56,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
         }
 
 
-        public  int Startvragen(int Nummer, string ant)
+        public  int Startvragen(int Nummer)
         {
             Nummer++;       
             if (Nummer == 1 )
@@ -82,11 +84,7 @@ namespace Stemwijzer_Front_End_Challenge.Pages
             return (Nummer);
 
         }
-
-        
-        string[] Antwoorden = new string[] { "-", "-", "-", "-" };
-        int Nummer = 0;
-        
+    
         public void Check()
         {
           string ant1 = (string)Antwoorden.GetValue(0);
