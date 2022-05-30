@@ -9,14 +9,7 @@ var Statement = document.getElementById("Statement");
 var NummerVraag = document.getElementById("Uitleg");
 var Uitklappen = document.getElementById("Uitklappen");
 var Meningen = document.getElementById("meningen");
-var PVVP = document.getElementById("PVVP");
-var PVVM = document.getElementById("PVVM");
-var SPP = document.getElementById("SPP");
-var SPM = document.getElementById("SPM");
-var D66P = document.getElementById("D66P");
-var D66M = document.getElementById("D66M");
-var CUP = document.getElementById("CUP");
-var CUM = document.getElementById("CUM");
+var Antwoorden = []
 var uitleg = 0;
 var vragen = 1;
 var i = 0;
@@ -152,6 +145,15 @@ var subjects = [{
     ]
 }
 ];
+
+
+
+
+
+
+
+
+
 function start()
 {
     question();
@@ -176,20 +178,27 @@ function AlterButtons()
 
 function uitleggen() {
     i--
+    p = i 
     Meningen.style.visibility = "visible"
-    PVVP.innerHTML = subjects[i]["parties"][0]["position"];
-    PVVM.innerHTML = subjects[i]["parties"][0]["opinion"];
+    subjects.forEach(opinion)
 
-    SPP.innerHTML = subjects[i]["parties"][1]["position"];
-    SPM.innerHTML = subjects[i]["parties"][1]["opinion"];
+    function opinion()
+    {
+        const para = document.createElement("p");
+        const node = document.createTextNode(subjects[i]["parties"][p]["position"]);
+        const node2 = document.createTextNode(subjects[i]["parties"][p]["opinion"]);
+        const element = document.getElementById("meningen");
+        element.appendChild(para);
+    };
 
-    D66P.innerHTML = subjects[i]["parties"][2]["position"];
-    D66M.innerHTML = subjects[i]["parties"][2]["opinion"];
-
-    CUP.innerHTML = subjects[i]["parties"][3]["position"];
-    CUM.innerHTML = subjects[i]["parties"][3]["opinion"];
     i++
 }
 
+function Antwoord(antwoord)
+{
 
+    Antwoorden[i] = antwoord
+
+    question()
+}
 

@@ -23,21 +23,26 @@
  @*    div for buttons to be made visible once the start button is pressed*@ 
              <div class = "ButtonsDiv" id = "ButtonsDiv">
  
-                  <button type = "button" class = "Buttons"  value = "Pro" >Eens</button>
+                  <button type = "button" class = "Buttons"  value = "Pro" onclick= "Antwoord('Eens') ">Eens</button>
 
-                  <button type = "button" class = "Buttons"  value = "Contra" >Oneens</button>
+                  <button type = "button" class = "Buttons"  value = "Contra" onclick="Antwoord('Oneens')">Oneens</button>
 
-                  <button type = "button" class = "Buttons"  value = "-" >geen mening</button>
+                  <button type = "button" class = "Buttons"  value = "-" onclick="Antwoord('geen mening')">geen mening</button>
 
                   <button type = "button"class = "Buttons"  onclick = "uitleggen()"  >meningen</button>
 
-             <button type = "button" class = "buttons, submit"   onclick = "question()"></button>
                   
                @* Party standpoints, made visible once started and show when pressed 'Meningen'*@   
             </div>
-                <div class = "mening" id = "meningen" style:visibility:hidden;>
+                <div class = "mening" id = "meningen" >
+
+                 </div>
+    </div>
+
+
+
                                       
-                     <p>PVV</p>
+@*                     <p>PVV</p>
                      <p id = "PVVP">punt</p>
                      <p id = "PVVM" >mening</p>
 
@@ -51,11 +56,5 @@
 
                      <p>CU</p>
                      <p id = "CUP" >punt</p>
-                     <p id = "CUM">mening</p>
-                 </div>
-    </div>
-
-
-
-
+                     <p id = "CUM">mening</p>*@
 
