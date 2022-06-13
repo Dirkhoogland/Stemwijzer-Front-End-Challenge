@@ -6,8 +6,11 @@ var Statement = document.getElementById("Statement");
 var NummerVraag = document.getElementById("Uitleg");
 var Uitklappen = document.getElementById("Uitklappen");
 var Meningen = document.getElementById("meningen");
+var UitslagDivbutton = document.getElementById("UitslagDivbutton");
 var UitslagDiv = document.getElementById("UitslagDiv");
 var Antwoorden = [];
+var partypasteGrootfront = [];
+var partypastesecularfront = [];
 var uitleg = 0;
 var vragen = 0;
 var i = 0;
@@ -3813,8 +3816,6 @@ function removequestions()
     ButtonsDiv.style.visibility = "hidden"
     NummerVraag.style.visibility = "hidden"
     Statement.style.visibility = "hidden"
-    uitleg1.style.visibility = "hidden"
-    uitleg2.style.visibility = "hidden"
     
     
 }
@@ -3845,9 +3846,80 @@ function result(Antwoorden)
     parties.sort((a, b) => a.Score - b.Score);
     parties.reverse();
 
+    UitslagDivbutton.style.visibility = "visible"
+}
+
+function uitslag(mode)
+{
+    
+    if (mode == "Normal")
+    {
+        inhoud.innerHTML = ""
+        parties.forEach(function (partypaste) {
+            const para = document.createElement("p");
+            const node = document.createTextNode(partypaste["name"]);
+            para.appendChild(node);
+            const nodeempty = document.createTextNode(" = ");
+            para.appendChild(nodeempty);
+            const node2 = document.createTextNode(partypaste["Score"]);
+            para.appendChild(node2);
+            const element = document.getElementById("inhoud");
+            element.appendChild(para);
+        });
+        
 
 
+    }
 
+    if (mode == "Groot")
+    {
+        inhoud.innerHTML = ""
+        parties.forEach(function (partypasteGroot) {
+            if (partypasteGroot["size"] >= 5) {
+                partypasteGrootfront.push(partypasteGroot);
+            }
+
+        });
+
+
+        partypasteGrootfront.forEach(function (partypaste) {
+
+            const para = document.createElement("p");
+            const node = document.createTextNode(partypaste["name"]);
+            para.appendChild(node);
+            const nodeempty = document.createTextNode(" = ");
+            para.appendChild(nodeempty);
+            const node2 = document.createTextNode(partypaste["Score"]);
+            para.appendChild(node2);
+            const element = document.getElementById("inhoud");
+            element.appendChild(para);
+
+        });
+    }
+
+    if (mode == "secular")
+    {
+        inhoud.innerHTML = ""
+        parties.forEach(function (partypastesecular) {
+            if (partypastesecular["secular"] = true) {
+                partypastesecularfront.push(partypastesecular);
+            }
+
+        });
+        partypastesecularfront.forEach(function (partypaste) {
+
+            const para = document.createElement("p");
+            const node = document.createTextNode(partypaste["name"]);
+            para.appendChild(node);
+            const nodeempty = document.createTextNode(" = ");
+            para.appendChild(nodeempty);
+            const node2 = document.createTextNode(partypaste["Score"]);
+            para.appendChild(node2);
+            const element = document.getElementById("inhoud");
+            element.appendChild(para);
+
+        });
+    }
 }
 
     function Antwoord(antwoord)

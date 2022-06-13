@@ -129,3 +129,9 @@ body {
     width: 120px;
     color: black;
 }
+#UitslagDiv{
+    visibility:hidden;
+}
+#UitslagDivbutton{
+    visibility:hidden;
+}
