@@ -1,15 +1,13 @@
 ﻿
 var ButtonStart = document.getElementById("ButtonStart");
-var Buttoneens = document.getElementById("Buttoneens");
-var Buttononeens = document.getElementById("Buttononeens");
-var Geenmening = document.getElementById("Geenmening");
 var ButtonsDiv = document.getElementById("ButtonsDiv");
 var Vraag = document.getElementById("Vraag");
 var Statement = document.getElementById("Statement");
 var NummerVraag = document.getElementById("Uitleg");
 var Uitklappen = document.getElementById("Uitklappen");
 var Meningen = document.getElementById("meningen");
-var Antwoorden = []
+var UitslagDiv = document.getElementById("UitslagDiv");
+var Antwoorden = [];
 var uitleg = 0;
 var vragen = 0;
 var i = 0;
@@ -17,153 +15,154 @@ var parties = [{
     name: "VVD",
     secular: true,
     size: 33,
-    long: "Volkspartij voor Vrijheid en Democratie"
+    long: "Volkspartij voor Vrijheid en Democratie",
+    Score: 0
 },
 {
     name: "CDA",
     secular: false,
     size: 19,
     long: "Christen Democratisch Appel",
-    "Score": 0
+    Score: 0
 },
 {
     name: "PVV",
     secular: true,
     size: 20,
     long: "Partij voor de Vrijheid",
-    "Score": 0
+    Score: 0
 },
 {
     name: "D66",
     secular: true,
     size: 19,
     long: "Democratie 66",
-    "Score": 0
+    Score: 0
 },
 {
     name: "GroenLinks",
     secular: true,
     size: 14,
-    "Score": 0
+    Score: 0
 },
 {
     name: "SP",
     secular: true,
     size: 14,
     long: "Socialistische Partij",
-    "Score": 0
+    Score: 0
 },
 {
     name: "PvdA",
     secular: true,
     size: 9,
     long: "Partij van de Arbeid",
-    "Score": 0
+    Score: 0
 },
 {
     name: "ChristenUnie",
     secular: false,
     size: 5,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Partij voor de Dieren",
     secular: true,
     size: 33,
-    "Score": 0
+    Score: 0
 },
 {
     name: "SGP",
     secular: false,
     size: 33,
     long: "Staatkundig Gerefomeerde Partij",
-    "Score": 0
+    Score: 0
 },
 {
     name: "DENK",
     secular: true,
     size: 3,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Forum voor Democratie",
     secular: true,
     size: 2,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Lokaal in de Kamer",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "OndernemersPartij",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "VNL",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Nieuwe Wegen",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "De Burger Beweging",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Piratenpartij",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
     name: "Artikel 1",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 
 },
 {
     name: "Libertarische Partij",
     secular: true,
     size: 0,
-    "Score": 0
+    Score: 0
 },
 {
-    "name": "50Plus",
-    "secular": true,
-    "size": 2,
-    "Score": 0
+    name: "50Plus",
+    secular: true,
+    size: 2,
+    Score: 0
 
 },
 {
-    "name": "Vrijzinnige Partij",
-    "secular": true,
-    "size": 0,
-    "Score": 0
+    name: "Vrijzinnige Partij",
+    secular: true,
+    size: 0,
+    Score: 0
 },
 {
-    "name": "Libertarische Partij",
-    "secular": true,
-    "size": 0,
-    "Score": 0
+    name: "Libertarische Partij",
+    secular: true,
+    size: 0,
+    Score: 0
 },
 {
-    "name": "Niet Stemmers",
-    "secular": true,
-    "size": 0,
-    "Score": 0
+    name: "Niet Stemmers",
+    secular: true,
+    size: 0,
+    Score: 0
 }
 
 ];
@@ -3788,8 +3787,9 @@ function question()
     
     Vraag.innerHTML = subjects[i]["statement"];
     Statement.innerHTML = subjects[i]["title"];
+    i++
     NummerVraag.innerHTML = "Vraag " + i;
-    i++;
+    i--
 }
 
 
@@ -3803,37 +3803,68 @@ function terug()
 { i--
     Vraag.innerHTML = subjects[i]["statement"];
     Statement.innerHTML = subjects[i]["title"];
+    i++
     NummerVraag.innerHTML = "Vraag " + i;
+    i--
+}
+function removequestions()
+{
+    Vraag.style.visibility = "hidden"
+    ButtonsDiv.style.visibility = "hidden"
+    NummerVraag.style.visibility = "hidden"
+    Statement.style.visibility = "hidden"
+    uitleg1.style.visibility = "hidden"
+    uitleg2.style.visibility = "hidden"
+    
+    
 }
 
 function result(Antwoorden)
 {
+    p = 0;
     subjects.forEach(function (subjects) {
-
+        p++
         subjects.parties.forEach(function (party) {
             //console.log(Antwoorden[i])
             //console.log(party.position);
             //console.log(party.name);
 
-            if (party.position == Antwoorden[i]) {
+            if (party.position == Antwoorden[p]) {
                 /*console.log(parties.find(c => c.name == party.name));*/
+                
+                partyindex = (parties.findIndex(c => c.name == party.name));
+                parties[partyindex]["Score"]++;
 
-                console.log(parties.findIndex(c => c.name == party.name));
+                
+
             }
         });
+
+       
     });
+    parties.sort((a, b) => a.Score - b.Score);
+    parties.reverse();
+
+
+
+
 }
 
     function Antwoord(antwoord)
-    {
-
+    {  /*console.log(i)*/
         Antwoorden[i] = antwoord;
-        if (Antwoorden.length == 30) {
-        result(Antwoorden);
-    }
-    else {
-        question()
-    }
+        i++;
+/*        console.log(Antwoorden)*/
+
+        if (Antwoorden.length <= 29)
+        {
+            question();
+        }
+        else
+        {
+            removequestions();
+            result(Antwoorden);
+        }
     }
 
 
