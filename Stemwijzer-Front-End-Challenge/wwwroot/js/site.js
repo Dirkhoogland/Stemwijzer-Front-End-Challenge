@@ -3851,29 +3851,34 @@ function result(Antwoorden)
 
 function uitslag(mode)
 {
-    
+    inhoud.innerHTML = ""
     if (mode == "Normal")
     {
-        inhoud.innerHTML = ""
+
         parties.forEach(function (partypaste) {
             const para = document.createElement("p");
+
+            const parent = document.createElement("p");
+
             const node = document.createTextNode(partypaste["name"]);
-            para.appendChild(node);
+
             const nodeempty = document.createTextNode(" = ");
-            para.appendChild(nodeempty);
+
             const node2 = document.createTextNode(partypaste["Score"]);
-            para.appendChild(node2);
+
             const element = document.getElementById("inhoud");
+
+            para.appendChild(node);
+            para.appendChild(nodeempty);
+            para.appendChild(node2);
             element.appendChild(para);
+            inhoud.style.visibility = "visible"
         });
-        
-
-
     }
 
     if (mode == "Groot")
     {
-        inhoud.innerHTML = ""
+
         parties.forEach(function (partypasteGroot) {
             if (partypasteGroot["size"] >= 5) {
                 partypasteGrootfront.push(partypasteGroot);
@@ -3886,39 +3891,54 @@ function uitslag(mode)
 
             const para = document.createElement("p");
             const node = document.createTextNode(partypaste["name"]);
-            para.appendChild(node);
+
             const nodeempty = document.createTextNode(" = ");
-            para.appendChild(nodeempty);
+
             const node2 = document.createTextNode(partypaste["Score"]);
-            para.appendChild(node2);
+
             const element = document.getElementById("inhoud");
+
+
+            para.appendChild(node);
+            para.appendChild(nodeempty);
+            para.appendChild(node2);
             element.appendChild(para);
+            inhoud.style.visibility = "visible"
 
         });
+        partypasteGrootfront.splice(0, partypasteGrootfront.length)
     }
 
     if (mode == "secular")
-    {
+    {  
         inhoud.innerHTML = ""
         parties.forEach(function (partypastesecular) {
-            if (partypastesecular["secular"] = true) {
+            if (partypastesecular["secular"] === true) {
                 partypastesecularfront.push(partypastesecular);
             }
 
         });
-        partypastesecularfront.forEach(function (partypaste) {
+        partypastesecularfront.forEach(function (partypastesec) {
 
             const para = document.createElement("p");
-            const node = document.createTextNode(partypaste["name"]);
-            para.appendChild(node);
+            const node = document.createTextNode(partypastesec["name"]);
+
             const nodeempty = document.createTextNode(" = ");
-            para.appendChild(nodeempty);
-            const node2 = document.createTextNode(partypaste["Score"]);
-            para.appendChild(node2);
+
+            const node2 = document.createTextNode(partypastesec["Score"]);
+
             const element = document.getElementById("inhoud");
+
+            para.appendChild(node);
+            para.appendChild(nodeempty);
+            para.appendChild(node2);
             element.appendChild(para);
+            inhoud.style.visibility = "visible"
+
+
 
         });
+        partypastesecularfront.splice(0, partypastesecularfront.length)
     }
 }
 
