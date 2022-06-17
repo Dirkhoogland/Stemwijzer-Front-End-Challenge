@@ -15,7 +15,7 @@ var extrapunten = document.getElementById("extrapunten");
 var Antwoorden = [];
 var partypasteGrootfront = [];
 var partypastesecularfront = [];
-var extrapuntenarray = [];
+var extrapuntenarray = [false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 var e = 0;
 var uitleg = 0;
 var vragen = 0;
@@ -3778,78 +3778,71 @@ var subjects = [{
     }
 ];
 
-
+// start de functionele opdracht
 function start()
 {
     question();
     AlterButtons();
 }
-
+// dit verandered de vragen op html en kijkt of een knop moet verkleuren
 function question()
 {
     if (Antwoorden[i] == "pro") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
+
         buttonpro.style.backgroundColor = "Blue";
 
     }
     if (Antwoorden[i] == "contra") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
+
         buttoncontra.style.backgroundColor = "Blue";
 
     }
     if (Antwoorden[i] == "geen") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
+
         buttongeen.style.backgroundColor = "Blue";
 
     }
-    else {
+
         Vraag.innerHTML = subjects[i]["statement"];
         Statement.innerHTML = subjects[i]["title"];
-    }
-    i++
+    
+    i++ 
+
     NummerVraag.innerHTML = "Vraag " + i;
     i--
+
 }
 
-
+// haalt de start knop weg en maakt de andere knoppen zichtbaar
 function AlterButtons()
 {
     ButtonsDiv.style.visibility = "visible";
     ButtonStart.style.visibility = "hidden";
 };
-
+//dit gaat een vraag terug 
 function terug()
 {
     i--
     if (Antwoorden[i] == "pro") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
         buttonpro.style.backgroundColor = "Blue";
 
     }
     if (Antwoorden[i] == "contra") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
         buttoncontra.style.backgroundColor = "Blue";
 
     }
     if (Antwoorden[i] == "geen") {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
+
         buttongeen.style.backgroundColor = "Blue";
 
     }
-    else {
-        Vraag.innerHTML = subjects[i]["statement"];
-        Statement.innerHTML = subjects[i]["title"];
-    }
+    Vraag.innerHTML = subjects[i]["statement"];
+    Statement.innerHTML = subjects[i]["title"];
     i++
     NummerVraag.innerHTML = "Vraag " + i;
     i--
 }
+// dit haalt alle vragen weg voor de checkbox lijst
 function removequestions()
 {
     Vraag.style.visibility = "hidden"
@@ -3863,28 +3856,41 @@ function removequestions()
     
     
 }
-
+// calculeert het eind resultaat
 function result()
 {
     p = 0;
     extrapunten.style.visibility = "hidden"
     extrapunten.style.height = "0px"
-    subjects.forEach(function (subjects) {
-        p++
-        //const checked = document.querySelectorAll('input[type="checkbox"]:checked');
-        //console.log([...checked].map(c => c.value))
 
+    var punten = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
+
+    // kijkt welke vragen extra punten krijgen
+   punten.forEach(function (punt) {
+
+       console.log(punt.id);
+       subjects.forEach(function (subject) {
+           if (punt.name == subject.statement) {
+               test = punt.id;
+
+               extrapuntenarray[test] = true;
+           }
+       })
+    });
+
+    subjects.forEach(function (subjects) {
+        
 
         subjects.parties.forEach(function (party) {
 
             if (party.position == Antwoorden[p]) {
 
-
+                // voegt score aan partijen toe
                 if (extrapuntenarray[p] === true)
                 {
                     partyindex = (parties.findIndex(c => c.name == party.name));
-                    parties[partyindex]["Score"]++;
-                    parties[partyindex]["Score"]++;
+                    parties[partyindex]["Score"]+=2;
+                   
                 }
                 else
                 {
@@ -3895,14 +3901,15 @@ function result()
             }
         });
 
-       
+        p++
     });
+   
     parties.sort((a, b) => a.Score - b.Score);
     parties.reverse();
 
     UitslagDivbutton.style.visibility = "visible"
 }
-
+// dit laat de uitslag zien op de webpagina zelf
 function uitslag(mode)
 {
     inhoud.innerHTML = ""
@@ -3995,7 +4002,7 @@ function uitslag(mode)
         partypastesecularfront.splice(0, partypastesecularfront.length)
     }
 }
-
+//voegt de antwoorden toe aan de array, en kijkt daarna of de gebruiker klaar is
     function Antwoord(antwoord)
     { 
         buttoncontra.style.backgroundColor = "white";
@@ -4023,7 +4030,7 @@ function uitslag(mode)
                 const element = document.getElementById("extrapunten");
                 x.id = e;
                 x.value = e;
-                x.name = e;
+                x.name = statement["statement"];
                 x.setAttribute("type", "checkbox");
 
                 para.appendChild(x);
@@ -4041,23 +4048,3 @@ function uitslag(mode)
 
 
 
-
-
-
-//function uitleggen() {
-//    i--
-//    p = i 
-//    Meningen.style.visibility = "visible"
-//    subjects.for(statement, subjects)
-
-//    function opinion()
-//    {
-//        const para = document.createElement("p");
-//        const node = document.createTextNode(subjects[i]["parties"][p]["position"]);
-//        const node2 = document.createTextNode(subjects[i]["parties"][p]["opinion"]);
-//        const element = document.getElementById("meningen");
-//        element.appendChild(para);
-//    };
-
-//    i++
-//
