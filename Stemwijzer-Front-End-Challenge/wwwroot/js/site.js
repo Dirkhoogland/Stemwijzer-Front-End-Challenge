@@ -8,9 +8,15 @@ var Uitklappen = document.getElementById("Uitklappen");
 var Meningen = document.getElementById("meningen");
 var UitslagDivbutton = document.getElementById("UitslagDivbutton");
 var UitslagDiv = document.getElementById("UitslagDiv");
+var buttonpro = document.getElementById("pro");
+var buttoncontra = document.getElementById("contra");
+var buttongeen = document.getElementById("geen");
+var extrapunten = document.getElementById("extrapunten");
 var Antwoorden = [];
 var partypasteGrootfront = [];
 var partypastesecularfront = [];
+var extrapuntenarray = [];
+var e = 0;
 var uitleg = 0;
 var vragen = 0;
 var i = 0;
@@ -3773,12 +3779,6 @@ var subjects = [{
 ];
 
 
-
-
-
-
-
-
 function start()
 {
     question();
@@ -3787,9 +3787,28 @@ function start()
 
 function question()
 {
-    
-    Vraag.innerHTML = subjects[i]["statement"];
-    Statement.innerHTML = subjects[i]["title"];
+    if (Antwoorden[i] == "pro") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttonpro.style.backgroundColor = "Blue";
+
+    }
+    if (Antwoorden[i] == "contra") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttoncontra.style.backgroundColor = "Blue";
+
+    }
+    if (Antwoorden[i] == "geen") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttongeen.style.backgroundColor = "Blue";
+
+    }
+    else {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+    }
     i++
     NummerVraag.innerHTML = "Vraag " + i;
     i--
@@ -3798,14 +3817,35 @@ function question()
 
 function AlterButtons()
 {
-    ButtonsDiv.style.visibility = "visible"
-    ButtonStart.style.visibility = "hidden"
+    ButtonsDiv.style.visibility = "visible";
+    ButtonStart.style.visibility = "hidden";
 };
 
 function terug()
-{ i--
-    Vraag.innerHTML = subjects[i]["statement"];
-    Statement.innerHTML = subjects[i]["title"];
+{
+    i--
+    if (Antwoorden[i] == "pro") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttonpro.style.backgroundColor = "Blue";
+
+    }
+    if (Antwoorden[i] == "contra") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttoncontra.style.backgroundColor = "Blue";
+
+    }
+    if (Antwoorden[i] == "geen") {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+        buttongeen.style.backgroundColor = "Blue";
+
+    }
+    else {
+        Vraag.innerHTML = subjects[i]["statement"];
+        Statement.innerHTML = subjects[i]["title"];
+    }
     i++
     NummerVraag.innerHTML = "Vraag " + i;
     i--
@@ -3813,30 +3853,44 @@ function terug()
 function removequestions()
 {
     Vraag.style.visibility = "hidden"
+    Vraag.style.height = "0px";
     ButtonsDiv.style.visibility = "hidden"
+    ButtonsDiv.style.height = "0px"
     NummerVraag.style.visibility = "hidden"
+    NummerVraag.style.height = "0px"
     Statement.style.visibility = "hidden"
+    ButtonsDiv.style.height = "0px"
     
     
 }
 
-function result(Antwoorden)
+function result()
 {
     p = 0;
+    extrapunten.style.visibility = "hidden"
+    extrapunten.style.height = "0px"
     subjects.forEach(function (subjects) {
         p++
+        //const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+        //console.log([...checked].map(c => c.value))
+
+
         subjects.parties.forEach(function (party) {
-            //console.log(Antwoorden[i])
-            //console.log(party.position);
-            //console.log(party.name);
 
             if (party.position == Antwoorden[p]) {
-                /*console.log(parties.find(c => c.name == party.name));*/
-                
-                partyindex = (parties.findIndex(c => c.name == party.name));
-                parties[partyindex]["Score"]++;
 
-                
+
+                if (extrapuntenarray[p] === true)
+                {
+                    partyindex = (parties.findIndex(c => c.name == party.name));
+                    parties[partyindex]["Score"]++;
+                    parties[partyindex]["Score"]++;
+                }
+                else
+                {
+                    partyindex = (parties.findIndex(c => c.name == party.name));
+                    parties[partyindex]["Score"]++;
+                }
 
             }
         });
@@ -3943,10 +3997,13 @@ function uitslag(mode)
 }
 
     function Antwoord(antwoord)
-    {  /*console.log(i)*/
+    { 
+        buttoncontra.style.backgroundColor = "white";
+        buttongeen.style.backgroundColor = "white";
+        buttonpro.style.backgroundColor = "white";
         Antwoorden[i] = antwoord;
         i++;
-/*        console.log(Antwoorden)*/
+
 
         if (Antwoorden.length <= 29)
         {
@@ -3955,7 +4012,28 @@ function uitslag(mode)
         else
         {
             removequestions();
-            result(Antwoorden);
+
+
+            subjects.forEach(function (statement)
+
+            {
+                var para = document.createElement("p");
+                var y = document.createTextNode(statement["statement"]);
+                var x = document.createElement("INPUT");
+                const element = document.getElementById("extrapunten");
+                x.id = e;
+                x.value = e;
+                x.name = e;
+                x.setAttribute("type", "checkbox");
+
+                para.appendChild(x);
+                para.appendChild(y);
+                element.appendChild(para);
+                e++
+
+            });
+            extrapunten.style.visibility = "visible";
+
         }
     }
 

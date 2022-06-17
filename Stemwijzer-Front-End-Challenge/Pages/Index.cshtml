@@ -23,14 +23,18 @@
  @*    div for buttons to be made visible once the start button is pressed*@ 
              <div class = "ButtonsDiv" id = "ButtonsDiv">
  
-                  <button type = "button" class = "Buttons"  value = "Pro" onclick= "Antwoord('pro') ">Pro</button>
+                  <button type = "button" class = "Buttons"  value = "Pro" onclick= "Antwoord('pro') " id = "pro">Pro</button>
 
-                  <button type = "button" class = "Buttons"  value = "Contra" onclick="Antwoord('contra')">Contra</button>
+                  <button type = "button" class = "Buttons"  value = "Contra" onclick="Antwoord('contra')" id = "contra">Contra</button>
 
-                  <button type = "button" class = "Buttons"  value = "-" onclick="Antwoord('geenmening')">geen mening</button>
+                  <button type = "button" class = "Buttons"  value = "-" onclick="Antwoord('geenmening')" id = "geen">geen mening</button>
 
                   <button type = "button" class="Buttons" onclick="terug()">Terug</button>
 
+            </div>
+
+            <div id = "extrapunten">
+               <button type = "button" class="Buttons" onclick="result()">Extra punten</button>
             </div>
             <div id="UitslagDivbutton">
                 <button type = "button" class="Buttons" onclick="uitslag('Normal')">Uitslag</button>
